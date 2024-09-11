@@ -8,7 +8,7 @@ const NavBar = () => {
         <nav className='h-[60px] sm:px-16 px-6 flex items-center'>
           <Link href='/'>
             <div className='flex items-center gap-2'>
-              <Image src='https://www.svgrepo.com/show/528160/cloud-bolt.svg' alt='logo' width={26} height={26} className='fill-sorange' />
+              <Image src='/icons/cloud-logo.svg' alt='logo' width={26} height={26} className='fill-sorange' />
               <p className='text-md text-sblack font-poppins font-semibold'>Segment</p>
             </div>
           </Link>  
