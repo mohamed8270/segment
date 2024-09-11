@@ -3,14 +3,15 @@ import Image from 'next/image'
 
 const DropSection = () => {
   return (
-    <div className='flex items-center justify-center gap-4 border-2 border-sblack h-[160px] w-full'>
+    <div className='flex items-center justify-center md:gap-7 gap-2 border-2 border-dashed border-sblack border-opacity-10 h-[160px] w-full rounded-md cursor-pointer relative'>
+        <input accept='*' type="file" multiple className='absolute w-full h-full m-0 p-0 cursor-pointer outline-none opacity-0' />
         <div>
-            <Image src='/icons/upload.svg' height={50} width={50} alt='drop' />
+            <Image src='/icons/upload.svg' height={40} width={40} alt='drop'/>
         </div>
-        <div className='font-poppins'>
-            <h1 className='text-md text-sblack font-medium'>Drap and drop your files here or import</h1>
-            <p className='text-sm text-sblack text-opacity-40 font-regular'>Maximum file size: 50 MB</p>
-            <p className='text-sm text-sblack text-opacity-40 font-regular'>Supported files: svg, png, pdf, docx, excel, jpeg, jpg</p>
+        <div className='font-poppins flex flex-col justify-center items-start gap-1'>
+            <h1 className='text-sm text-sblack font-medium'>Import or drap and drop your files here</h1>
+            <p className='text-xs text-sblack text-opacity-40 font-regular'>Maximum file size: 50 MB</p>
+            <p className='text-xs text-sblack text-opacity-40 font-regular'>Supported files: svg, png, pdf, docx, excel, jpeg, jpg</p>
         </div>
     </div>
   )
