@@ -2,14 +2,18 @@
 
 import React,{useRef, useState} from 'react'
 import Image from 'next/image'
+import { handleUpload } from '@/lib/action';
 
 const DropSection = () => {
-    const [SelectedFile, setSelectedFile] = useState(null);
-    const [Uploaded, setUploaded] = useState(null);
-    const inputRef = useRef(null);
+    const onChange = async (e: any) => {
+        const file = e.target.files[0];
+        const url = await handleUpload(file);
+        console.log(url);
+    }
+   
   return (
     <div className='flex items-center justify-center md:gap-7 gap-2 border-2 border-dashed border-sblack border-opacity-10 h-[160px] w-full rounded-md cursor-pointer relative'>
-        <input accept='*' type="file" className='absolute w-full h-full m-0 p-0 cursor-pointer outline-none opacity-0' />
+        <input accept='*' type="file" multiple onChange={onChange} className='absolute w-full h-full m-0 p-0 cursor-pointer outline-none opacity-0' />
         <div>
             <Image src='/icons/upload.svg' height={35} width={35} alt='drop'/>
         </div>
