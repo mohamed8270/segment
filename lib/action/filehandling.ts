@@ -8,10 +8,13 @@ export async function handleUpload(file: any) {
         try {
             const bucket: string = "medimages";
             const nanoid = customAlphabet('1234567890', 6);
+
+            // file name & type changing
             const filename = nanoid();
-            console.log(`This is file ${file}`, filename);
+            const fileType = file.name.split(".").pop();
             handleHashing(file);
-            const {data, error} = await supabase.storage.from(bucket).upload(`${filename}.${file.name.split(".").pop()}`, file);
+
+            const {data, error} = await supabase.storage.from(bucket).upload(`${filename}.${fileType}`, file);
             if(error) { 
                 console.log('Error while uploading', error.message);
             } else {
@@ -32,7 +35,6 @@ export async function handleHashing(file: any) {
     reader.onload = (e) => {
         const fileContent = e.target?.result;
         const hashed = sha256(fileContent as string).toString();
-        console.log(`This is hased ${hashed}`);
         return hashed;
     };
     reader.readAsArrayBuffer(file);

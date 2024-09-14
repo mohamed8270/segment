@@ -3,12 +3,14 @@
 import React,{useRef, useState} from 'react'
 import Image from 'next/image'
 import { handleUpload } from '@/lib/action/filehandling';
+import { uploadToMongo } from '@/lib/action';
 
 const DropSection = () => {
     const onChange = async (e: any) => {
         const file = e.target.files[0];
         const url = await handleUpload(file);
         console.log(url);
+        uploadToMongo(file);
     }
    
   return (
