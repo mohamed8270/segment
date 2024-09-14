@@ -2,7 +2,7 @@
 
 import React,{useRef, useState} from 'react'
 import Image from 'next/image'
-import { handleUpload } from '@/lib/action';
+import { handleUpload } from '@/lib/action/filehandling';
 
 const DropSection = () => {
     const onChange = async (e: any) => {
