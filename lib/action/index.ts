@@ -2,8 +2,8 @@ import supabase from '@/utils/supabase/client';
 import { nanoid } from "nanoid";
 
 export async function handleUpload(file: any) {
-    try {
-        if(file) {
+    if(file) {
+        try {
             const bucket: string = "medimages";
             const filename = nanoid();
             console.log(`This is file ${file}`, filename);
@@ -15,9 +15,10 @@ export async function handleUpload(file: any) {
                 console.log(file);
                 return file?.publicUrl;
             }
+        } catch (e: any) {
+            console.log('Something went wrong', e.message);
         }
-    } catch (error: any) {
-        console.log('Unexpected error', error.message);
     }
-    return 'Something went wrong';
-}
+    return 'Client side issue!';
+} 
+
