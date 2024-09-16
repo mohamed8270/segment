@@ -6,13 +6,13 @@ import { uploadToMongo } from '@/lib/action';
 import { handleHashing, handleUpload } from '@/lib/action/filehandling';
 
 
-const DropSection = async () => {
+const DropSection = () => {
 
     const onChange = async (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         const file = e?.currentTarget?.files?.[0];
         // const publickUrl = await handleUpload(file);
-        const hash = handleHashing(file);
+        const hash = await handleHashing(file);
         console.log(hash);
         // await uploadToMongo(publickUrl, file?.name, file?.size, file?.type, hash);
     }

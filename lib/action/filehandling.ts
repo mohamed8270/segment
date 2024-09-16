@@ -30,10 +30,14 @@ export async function handleUpload(file: any) {
 // hashing happens here
 export async function handleHashing(file: any) {
     const reader = new FileReader();
-    reader.onload = (e) => {
-        const fileContent = e.target?.result;
-        const hashed = sha256(fileContent as string).toString();
-        return hashed.toString();
-    };
-    reader.readAsArrayBuffer(file);
+    return new Promise((resolve, reject)  => {
+        reader.onload = (e) => {
+            const fileConten = e?.target?.result;
+            const salt = customAlphabet('1234567890', 5);
+            const hashed = sha256(fileConten as string + salt()).toString();
+            resolve(hashed);
+        };
+        reader.onerror = (e) => reject(e);
+        reader.readAsArrayBuffer(file);
+    });
 }
