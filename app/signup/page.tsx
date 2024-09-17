@@ -9,7 +9,7 @@ import axios from 'axios';
 const SignupPage = () => {
     const router = useRouter();
     const [user, setUser] = React.useState({firstname: "", lastname: "", username: "", email: "", phone: "", password: ""});
-    const SignUp = async () => {
+    const onSignUp = async () => {
         try {
             const signupRoute = String(process.env.SIGNUP_ROUTE);
             const res = await axios.post(signupRoute);
@@ -37,11 +37,11 @@ const SignupPage = () => {
                 <input id='phone' value={user.phone} onChange={(e) => setUser({...user, phone: e.target.value})} type="phone" placeholder='Phone' className='h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
                 <input id='password' value={user.password} onChange={(e) => setUser({...user, password: e.target.value})} type="password" placeholder='Password' className='my-3 h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none px-2 rounded-md' />
             </div>
-            <button onClick={SignUp} className='h-12 md:w-[464px] w-full bg-sblack rounded-md text-xs font-poppins font-medium text-swhite'>Sign Up</button>
-            <h1 className='text-xs font-poppins font-regular text-sblack text-opacity-40 my-4'>Already have an account? <Link href='/'><span className='text-sblack'>Login here</span></Link> </h1>
+            <button onClick={onSignUp} className='h-12 md:w-[464px] w-full bg-sblack rounded-md text-xs font-poppins font-medium text-swhite'>Sign Up</button>
+            <h1 className='text-xs font-poppins font-regular text-sblack text-opacity-40 my-4'>Already have an account? <Link href='/login'><span className='text-sblack'>Login here</span></Link> </h1>
         </div>
         <div className='md:flex-1 justify-end items-center md:m-6 rounded-lg'>
-            <img src="/images/gradient.jpg" alt="signup" className='md:h-screen rounded-2xl object-cover'  />
+            <img src="/images/gradient.jpg" alt="signup" className='md:h-screen object-cover'  />
         </div>
     </div>
   )
