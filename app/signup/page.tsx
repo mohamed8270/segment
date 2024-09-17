@@ -12,7 +12,7 @@ const SignupPage = () => {
     const onSignUp = async () => {
         try {
             const signupRoute = String(process.env.SIGNUP_ROUTE);
-            const res = await axios.post(signupRoute);
+            const res = await axios.post(signupRoute, user);
             router.push('/login');
         } catch (e: any) {
             console.log("Can't create user, Please try again later", e.message);
