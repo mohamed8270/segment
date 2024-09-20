@@ -2,6 +2,7 @@ import { connectToDB } from "@/lib/mongoose";
 import Users from "@/lib/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
+import { sendEmail } from "@/helper/mailer";
 
 connectToDB();
 
@@ -19,6 +20,8 @@ export async function POST(request: NextRequest) {
         const data = {firstname, lastname, username, email, phone, password: hashedPassword};
         const newUser = new Users(data);
         const savedUser = await newUser.save();
+
+        await sendEmail({email, emailType: "VERIFY", userId: savedUser._id});
 
         return NextResponse.json({message: "User created successfully", success: true, savedUser}, {status: 201});
     } catch (error) {
