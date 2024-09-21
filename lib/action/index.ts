@@ -24,3 +24,14 @@ export async function uploadToMongo(file: any, originalname: any, size: any, mim
         console.log("Can't upload to MongoDB!", e.message);
     }
 }
+
+// retreive all data
+export async function getAllData() {
+    try {
+        connectToDB();
+        const imageData = await UploadImageModel.find();
+        return imageData;
+    } catch (e: any) {
+        console.log("Error retreiving data", e.message);
+    }
+}
