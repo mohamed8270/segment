@@ -19,11 +19,13 @@ export async function POST(request: NextRequest) {
 
         const data = {firstname, lastname, username, email, phone, password: hashedPassword};
         const newUser = new Users(data);
+        console.log(newUser);
         const savedUser = await newUser.save();
+        console.log(savedUser);
 
-        await sendEmail({email, emailType: "VERIFY", userId: savedUser._id});
+        // await sendEmail({email, emailType: "VERIFY", userId: savedUser._id});
 
-        return NextResponse.json({message: "User created successfully", success: true, savedUser}, {status: 201});
+        return NextResponse.json({message: "User created successfully", success: true, savedUser});
     } catch (error) {
         return NextResponse.json({error: "Internal Server Error"}, {status: 500});
     }
