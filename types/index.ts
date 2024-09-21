@@ -1,5 +1,4 @@
 export type uploadImageType = {
-    filename: string;
     originalname: string;
     path: string;
     size: number;

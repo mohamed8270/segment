@@ -1,12 +1,18 @@
 import React from 'react'
+import {UploadedDataStack} from './UploadedDataStack'
+import { getAllData } from '@/lib/action'
 
-const FileStack = () => {
+const FileStack = async () => {
+    const data = await getAllData();
   return (
-    <div className='mx-6 md:mx-16 mt-10 mb-3'>
+    <div className='mx-6 md:mx-80 mt-10 mb-3'>
         <div className='h-9 w-full bg-sgrey bg-opacity-60 flex items-center justify-between px-3'>
             <h1 className='text-xs font-poppins font-medium text-sblack text-opacity-40'>File name</h1>
-            <h1 className='text-xs font-poppins font-medium text-sblack text-opacity-40'>Uploaded by</h1>
+            <h1 className='text-xs font-poppins font-medium text-sblack text-opacity-40'>Hash details</h1>
         </div>
+        {data?.map((uploadeddata) => (
+            <UploadedDataStack key={uploadeddata._id} uploaded={uploadeddata}/>
+        ))}
     </div>
   )
 }
