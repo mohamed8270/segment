@@ -53,3 +53,18 @@ export function formatSize(bytes: any, decimalPoints= 2) {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
+
+// delete supabase file
+export async function deleteSupabaseFile(path: string) {
+    if(!path) return;
+    try {
+        const bucket: string = "medimages";
+        const {data, error} = await supabase.storage.from(bucket).remove([path]);
+        if(error) {
+            console.log('Error while deleting', error.message);
+            return error.message;
+        }
+    } catch (e: any) {
+        console.log('Something went wrong', e.message);
+    }
+}
