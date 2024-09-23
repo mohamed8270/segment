@@ -14,8 +14,8 @@ const NavBar = () => {
           </Link>
           <Link href='/qrcode'>
             <div className='flex items-center justify-center gap-3 h-10 w-36 border-2 border-sgrey rounded-full'>
-              <Image src='/icons/qrcode.svg' alt='qrcode' height={20} width={20} className='fill-sorange'/>
-              <p className='text-xs text-sblack font-poppins font-semibold'>Scan QR</p>
+              <Image src='/icons/data.svg' alt='qrcode' height={20} width={20} className='fill-sorange'/>
+              <p className='text-xs text-sblack font-poppins font-semibold'>Search data</p>
             </div>
           </Link>  
         </nav>
