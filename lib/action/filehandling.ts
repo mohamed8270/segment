@@ -62,7 +62,7 @@ export async function deleteSupabaseFile(path: string) {
 
         const url = new URL(path);
         const pathnameParts = url.pathname.split('/');
-        const filePath = pathnameParts.slice(4).join('/');
+        const filePath = pathnameParts.slice(6).join('/');
         console.log(filePath);
 
         const {data, error} = await supabase.storage.from(bucket).remove([filePath]);
