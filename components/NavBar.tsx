@@ -45,7 +45,7 @@ const NavBar = () => {
             </Link> 
             <div className='flex-col flex gap-1 items-start justify-center'>
               <p className='text-xs font-poppins font-medium text-sblack'>{userData === 'nothing' ? 'Nothing' : userData}</p>
-              <p onClick={() => logOut} className='text-xs font-poppins font-medium text-sblack text-opacity-40 hover:text-sorange'>Logout</p>
+              <p onClick={() => logOut()} className='text-xs font-poppins font-medium text-sblack text-opacity-40 hover:text-sorange cursor-pointer'>Logout</p>
             </div>
           </div> 
         </nav>

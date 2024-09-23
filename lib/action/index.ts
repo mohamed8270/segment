@@ -16,7 +16,7 @@ export async function uploadToMongo(file: any, originalname: any, size: any, mim
             mimetype: mimetype,
             hash: hash,
         };
-        console.log(data);
+        // console.log(data);
 
         const res = new UploadImageModel(data);
         await res.save();
