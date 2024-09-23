@@ -1,5 +1,5 @@
 import { uploadImageType } from '@/types'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { formatSize } from '@/lib/action/filehandling';
 import HoverButton from './HoverButton';

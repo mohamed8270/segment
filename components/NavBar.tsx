@@ -36,16 +36,16 @@ const NavBar = () => {
               <p className='text-md text-sblack font-poppins font-semibold'>Segment</p>
             </div>
           </Link>
-          <div className='flex justify-center items-center gap-5'>
-            <Link href='/qrcode'>
+          <div className='flex justify-center items-center md:gap-5'>
+            <Link href='/search'>
               <div className='flex items-center justify-center gap-3 h-10 w-36 border-2 border-sgrey rounded-full'>
                 <Image src='/icons/data.svg' alt='qrcode' height={20} width={20} className='fill-sorange'/>
                 <p className='text-xs text-sblack font-poppins font-semibold'>Search data</p>
               </div>
             </Link> 
             <div className='flex-col flex gap-1 items-start justify-center'>
-              <p className='text-xs font-poppins font-medium text-sblack'>{userData === 'nothing' ? 'Nothing' : userData}</p>
-              <p onClick={() => logOut()} className='text-xs font-poppins font-medium text-sblack text-opacity-40 hover:text-sorange cursor-pointer'>Logout</p>
+              <p className='md:text-xs text-[0px] font-poppins font-medium text-sblack'>{userData === 'nothing' ? 'Nothing' : userData}</p>
+              <p onClick={() => logOut()} className='md:text-xs text-[0px] font-poppins font-medium text-sblack text-opacity-40 hover:text-sorange cursor-pointer'>Logout</p>
             </div>
           </div> 
         </nav>
