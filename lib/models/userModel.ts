@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     username: {type: String, required: [true, "Please provide username"], unique: true},
     email: {type: String, required: [true, "Please provide email"],  unique: true},
     phone: {type: String, required: [true, "Please provide phone number"], unique: true},
+    aadhaar: {type: String, required: [true, "Please provide aadhaar number"], unique: true},
     password: {type: String, required: [true, "Please provide password"]},
     isVerified: {type: Boolean, default: false},
     forgotPasswordToken: String,

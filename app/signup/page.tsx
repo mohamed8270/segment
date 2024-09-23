@@ -9,7 +9,7 @@ import axios from 'axios';
 const SignupPage = () => {
     const router = useRouter();
     const [loading, setIsloading] = React.useState(false);
-    const [user, setUser] = React.useState({firstname: "", lastname: "", username: "", email: "", phone: "", password: ""});
+    const [user, setUser] = React.useState({firstname: "", lastname: "", username: "", email: "", phone: "", aadhaar: "", password: ""});
     const onSignUp = async () => {
         try {
             setIsloading(true);
@@ -35,9 +35,10 @@ const SignupPage = () => {
                     <input id='firstname' value={user.firstname} onChange={(e) => setUser({...user, firstname: e.target.value})} type="text" placeholder='First name' className='h-12 w-56 bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
                     <input id='lastname' value={user.lastname} onChange={(e) => setUser({...user, lastname: e.target.value})} type="text" placeholder='Last name' className='my-3 h-12 w-56 bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
                 </div>
-                <input id='username' value={user.username} onChange={(e) => setUser({...user, username: e.target.value})} type="text" placeholder='User name' className='h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
-                <input id='email' value={user.email} onChange={(e) => setUser({...user, email: e.target.value})} type="mail" placeholder='Email' className='my-3 h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
-                <input id='phone' value={user.phone} onChange={(e) => setUser({...user, phone: e.target.value})} type="phone" placeholder='Phone' className='h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
+                <input id='username' value={user.username} onChange={(e) => setUser({...user, username: e.target.value})} type="text" placeholder='User name' className='my-3 h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
+                <input id='email' value={user.email} onChange={(e) => setUser({...user, email: e.target.value})} type="mail" placeholder='Email' className='h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
+                <input id='phone' value={user.phone} onChange={(e) => setUser({...user, phone: e.target.value})} type="phone" placeholder='Phone' className='my-3 h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
+                <input id='aadhaar' value={user.aadhaar} onChange={(e) => setUser({...user, aadhaar: e.target.value})} type="phone" placeholder='Aadhaar' className='h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none pl-2 rounded-md' />
                 <input id='password' value={user.password} onChange={(e) => setUser({...user, password: e.target.value})} type="password" placeholder='Password' className='my-3 h-12 md:w-[464px] w-full bg-sgrey bg-opacity-70 text-xs font-poppins font-regular text-sblack outline-none px-2 rounded-md' />
             </div>
             <button onClick={onSignUp} className='h-12 md:w-[464px] w-full bg-sblack rounded-md text-xs font-poppins font-medium text-swhite'>{loading ? <div className='flex justify-center items-center gap-2'><Image src='/icons/loading.svg' alt='loading' height={20} width={20} className='animate-spin' /> <p className='text-xs font-poppins font-medium text-swhite'>Creating user</p> </div> : 'Sign Up' }</button>
