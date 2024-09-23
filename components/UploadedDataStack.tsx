@@ -12,7 +12,7 @@ export const UploadedDataStack = ({uploaded}: Props) => {
   return (
     <div className='flex justify-between items-center my-6'>
         <div className='flex items-center gap-2 md:gap-4'>
-            <HoverButton path={uploaded.path} name={uploaded.originalname}/>
+            <HoverButton path={uploaded.path} name={uploaded.originalname} id={uploaded.id}/>
             <div className='flex-col flex justify-center items-start gap-1'>
                 <h1 className='text-sm font-poppins font-medium text-sblack'>{uploaded.originalname}</h1>
                 <p className='text-xs font-poppins font-normal text-sblack text-opacity-40'><span>{formatSize(uploaded.size)}</span> 🔸 <span>{uploaded.mimetype}</span></p>

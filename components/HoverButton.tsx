@@ -2,13 +2,15 @@
 
 import React, {useState} from 'react'
 import Image from 'next/image';
+import { deleteMongoData } from '@/lib/action';
 
 interface Props {
     path: string;
     name: string;
+    id: string;
 }
 
-const HoverButton = ({path, name}: Props) => {
+const HoverButton = ({path, name, id}: Props) => {
     const [hover, setHover] = useState(false);
   return (
     <>
@@ -17,10 +19,10 @@ const HoverButton = ({path, name}: Props) => {
         </button>
         {hover ? <div className='flex items-center gap-1 md:gap-3'>
             <button className='bg-sgrey bg-opacity-50 flex justify-center items-center p-2.5 rounded-full'>
-                <Image src='icons/copy.svg' alt='' height={20} width={20}/>
+                <Image src='icons/copy.svg' alt='copy' height={20} width={20}/>
             </button>
-            <button className='bg-sgrey bg-opacity-50 flex justify-center items-center p-2.5 rounded-full'>
-                <Image src='icons/delete.svg' alt='' height={20} width={20}/>
+            <button onClick={() => deleteMongoData(id, path)} className='bg-sgrey bg-opacity-50 flex justify-center items-center p-2.5 rounded-full'>
+                <Image src='icons/delete.svg' alt='delete' height={20} width={20}/>
             </button>
         </div> : null }
     </>

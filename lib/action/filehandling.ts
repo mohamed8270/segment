@@ -59,7 +59,13 @@ export async function deleteSupabaseFile(path: string) {
     if(!path) return;
     try {
         const bucket: string = "medimages";
-        const {data, error} = await supabase.storage.from(bucket).remove([path]);
+
+        const url = new URL(path);
+        const pathnameParts = url.pathname.split('/');
+        const filePath = pathnameParts.slice(4).join('/');
+        console.log(filePath);
+
+        const {data, error} = await supabase.storage.from(bucket).remove([filePath]);
         if(error) {
             console.log('Error while deleting', error.message);
             return error.message;
