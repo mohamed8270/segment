@@ -22,7 +22,7 @@ const LoginPage = () => {
         }
     };
   return (
-    <div className='md:flex justify-center items-center gap-10 mx-6'>
+    <div className='md:flex justify-center items-center gap-10 mx-6 md:mx-0'>
         <div className='flex-1 justify-end items-center md:ml-16'>
             <div className='flex items-center gap-2 my-12'>
               <Image src='/icons/cloud-logo.svg' alt='logo' width={26} height={26} className='fill-sblack' />
