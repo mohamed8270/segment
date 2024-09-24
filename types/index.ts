@@ -5,5 +5,7 @@ export type uploadImageType = {
     size: number;
     mimetype: string;
     hash: string;
+    phone: string;
+    aadhaar: string;
     createdAt: Date;
 };

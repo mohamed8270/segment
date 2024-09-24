@@ -6,6 +6,8 @@ const uploadSchema = new mongoose.Schema({
     size: {type: Number},
     mimetype: {type: String},
     hash: {type: String, required: true},
+    phone: {type: String, required: true},
+    aadhaar: {type: String, required: true},
     createdAt: { type: Date, default: Date.now}
 });
 

@@ -1,10 +1,11 @@
 'use server';
 
 import UploadImageModel from '../models/upload.model';
+import Users from '../models/userModel';
 import {connectToDB} from '../mongoose';
 import { deleteSupabaseFile } from './filehandling';
 
-export async function uploadToMongo(file: any, originalname: any, size: any, mimetype: any, hash: any) {
+export async function uploadToMongo(file: any, originalname: any, size: any, mimetype: any, hash: any, phone: string, aadhaar: string) {
     if(!file) return;
     try {
         connectToDB();
@@ -15,6 +16,8 @@ export async function uploadToMongo(file: any, originalname: any, size: any, mim
             size: size,
             mimetype: mimetype,
             hash: hash,
+            phone: phone,
+            aadhaar: aadhaar,
         };
         // console.log(data);
 
@@ -34,6 +37,19 @@ export async function getAllData() {
         return imageData;
     } catch (e: any) {
         console.log("Error retreiving data", e.message);
+    }
+}
+
+// get session data
+export async function getSessionData(session: any) {
+    try {
+        connectToDB();
+        const user = await Users.findOne({session});
+        if(!user) return;
+        const image = await UploadImageModel.find({userId: user._id});
+        return image;
+    } catch (e: any) {
+        console.log('Error while getting session', e.message);
     }
 }
 

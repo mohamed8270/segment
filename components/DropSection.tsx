@@ -4,6 +4,7 @@ import React,{ useState} from 'react'
 import Image from 'next/image'
 import { uploadToMongo } from '@/lib/action';
 import { formatSize, handleHashing, handleUpload } from '@/lib/action/filehandling';
+import axios from 'axios';
 
 
 const DropSection = () => {
@@ -23,8 +24,10 @@ const DropSection = () => {
             setfileSize(file?.size!);
             const publickUrl = await handleUpload(file);
             const hash = await handleHashing(file);
-            console.log(hash);
-            await uploadToMongo(publickUrl, file?.name, file?.size, file?.type, hash);
+            const res = await axios.get('/api/users/me');
+            const phone = res.data.data.phone;
+            const aadhaar = res.data.data.aadhaar;
+            await uploadToMongo(publickUrl, file?.name, file?.size, file?.type, hash, phone, aadhaar);
         } catch (e: any) {
             console.log("Client side error", e.message);
         } finally {
