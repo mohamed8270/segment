@@ -74,3 +74,12 @@ export async function deleteSupabaseFile(path: string) {
         console.log('Something went wrong', e.message);
     }
 }
+
+// masking aadhaar
+export async function maskAadhaar(aadhaar: string) {
+    const aadhaarNumber = aadhaar.toString();
+    if(aadhaarNumber.length !== 12) throw new Error("Inavlid aadhaar!");
+    const maskedAadhaar = 'xxxxxxxx' + aadhaarNumber.slice(-4);
+    const formattedAadhaar = maskedAadhaar.match(/.{1,4}/g)?.join(' ');
+    return formattedAadhaar;
+}

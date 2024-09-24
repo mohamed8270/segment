@@ -1,6 +1,6 @@
 import React from 'react'
 import {UploadedDataStack} from './UploadedDataStack'
-import { getAllData, getSessionData } from '@/lib/action'
+import { getSessionData } from '@/lib/action'
 import { getSession } from 'next-auth/react'
 
 const FileStack = async () => {
